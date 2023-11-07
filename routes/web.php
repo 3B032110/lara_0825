@@ -57,10 +57,18 @@ Route::get('/', function () {
     // ]);
 
     // // save method update data (id = 1 data)
-    $post = Post::find(1);
-	$post->title = "saved title";
-	$post->content = "saved content";
-	$post->save();
+    // $post = Post::find(1);
+	// $post->title = "saved title";
+	// $post->content = "saved content";
+	// $post->save();
 
-	return 'Update, OK!';
+    // delete and destroy method => delete data
+    $post = Post::find(1);
+	$post->delete();
+
+	Post::destroy(2);
+
+	Post::destroy(3, 5, 7);
+
+	return 'OK!';
 });
