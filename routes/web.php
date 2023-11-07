@@ -63,12 +63,25 @@ Route::get('/', function () {
 	// $post->save();
 
     // delete and destroy method => delete data
-    $post = Post::find(1);
-	$post->delete();
+    // $post = Post::find(1);
+	// $post->delete();
 
-	Post::destroy(2);
+	// Post::destroy(2);
 
-	Post::destroy(3, 5, 7);
+	// Post::destroy(3, 5, 7);
+
+    // Compare the differences between Model and Collection
+    $allPosts = Post::all();
+    dd($allPosts);
+
+    $featurePosts = Post::where('is_feature', true)->get();
+    dd($featurePosts);
+
+    $fourthPost = Post::find(4);
+    dd($fourthPost);
+
+    $lastPost = Post::orderBy('id','DESC')->first();
+    dd($lastPost);
 
 	return 'OK!';
 });
