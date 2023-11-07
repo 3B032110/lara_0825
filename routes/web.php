@@ -45,9 +45,16 @@ Route::get('/', function () {
 	// }
 	// dd($post);
 
-    // where method (id < 10)
-	$posts = Post::where('id', '<', 10)->orderBy('id', 'DESC')->get();
-	dd($posts);
+    // // where method (id < 10)
+	// $posts = Post::where('id', '<', 10)->orderBy('id', 'DESC')->get();
+	// dd($posts);
 
-	return 'Saved, OK!';
+    // update method (id = 1 data)
+    $post = Post::find(1);
+    $post->update([
+        'title'=>'updated title',
+        'content'=>'updated content',
+    ]);
+
+	return 'Update, OK!';
 });
