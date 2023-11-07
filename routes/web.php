@@ -15,9 +15,15 @@ use App\Models\Post;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
-    Post::create([
-		'title'=>'created title',
-		'content'=>'created content',
-	]);
+    // Post::create([
+	// 	'title'=>'created title',
+	// 	'content'=>'created content',
+	// ]);
+
+    $post = new Post();
+	$post->title = "test title";
+	$post->content = "test content";
+	$post->save();
+
+	return 'Saved, OK!';
 });
