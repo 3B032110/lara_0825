@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Models\Comment;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,17 +72,28 @@ Route::get('/', function () {
 	// Post::destroy(3, 5, 7);
 
     // Compare the differences between Model and Collection
-    $allPosts = Post::all();
-    dd($allPosts);
+    // $allPosts = Post::all();
+    // dd($allPosts);
 
-    $featurePosts = Post::where('is_feature', true)->get();
-    dd($featurePosts);
+    // $featurePosts = Post::where('is_feature', true)->get();
+    // dd($featurePosts);
 
-    $fourthPost = Post::find(4);
-    dd($fourthPost);
+    // $fourthPost = Post::find(4);
+    // dd($fourthPost);
 
-    $lastPost = Post::orderBy('id','DESC')->first();
-    dd($lastPost);
+    // $lastPost = Post::orderBy('id','DESC')->first();
+    // dd($lastPost);
+
+    // Use Post Model of comments method fetch all comments
+    $post = Post::find(6);
+    echo '標題: '.$post->title.'<br>';
+    echo '內容: '.$post->content.'<br>';
+    echo '--------------------------'.'<br>';
+    $comments = $post->comments()->get();
+    foreach ($comments as $comment){
+        echo '留言: '.$comment->content."<br>";
+        echo '--------------------------'.'<br>';
+    }
 
 	return 'OK!';
 });
