@@ -49,12 +49,18 @@ Route::get('/', function () {
 	// $posts = Post::where('id', '<', 10)->orderBy('id', 'DESC')->get();
 	// dd($posts);
 
-    // update method (id = 1 data)
+    // // update method update data (id = 1 data)
+    // $post = Post::find(1);
+    // $post->update([
+    //     'title'=>'updated title',
+    //     'content'=>'updated content',
+    // ]);
+
+    // // save method update data (id = 1 data)
     $post = Post::find(1);
-    $post->update([
-        'title'=>'updated title',
-        'content'=>'updated content',
-    ]);
+	$post->title = "saved title";
+	$post->content = "saved content";
+	$post->save();
 
 	return 'Update, OK!';
 });
